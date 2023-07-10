@@ -1,58 +1,61 @@
 import { useEffect, useState } from "react";
 import { createSearchParams } from "react-router-dom";
-import { getList } from "../../api/boardAPI";
+import { getList } from "../../api/boardAPI"; // <- 오류아님
 import ListPageComponent from "../common/ListPageComponent";
 
-
+// PageResponseDTO
 const initState = {
-    dtoList:[],
-    end:0,
-    start:0,
-    next:false,
-    prev:false,
-    pageNums:[],
-    page:0,
-    size:0,
-    requestDTO: null
-
+  dtoList: [],
+  end: 0,
+  start: 0,
+  next: false,
+  prev: false,
+  pageNums: [], // 배열로 해야 반복문 처리 편리  
+  page: 0,
+  size: 0,
+  requestDTO: null
 }
 
-const ListComponent = ({queryObj, movePage, moveRead}) => {
 
-    const [listData, setListData] = useState(initState)
+const ListComponent = ({ queryObj, movePage, moveRead }) => {
 
-    useEffect(() => {
+  const [listData, setListData] = useState(initState) // 오류 안 나게 초기값을 설정
 
-        getList(queryObj).then(data => {
-            console.log(data)
-            setListData(data)
-        })
+  useEffect(() => {
 
-    }, [queryObj])
+    getList(queryObj).then(data => {
+      console.log(data)
+      setListData(data)
+    })
 
-    const handleClickPage = (pageNum) => {
-        movePage(pageNum)
-    }
+    // queryObj 안에 저장되어있는 친구들중에 하나라도 바뀌면 바뀌게끔
+  }, [queryObj])
 
-    console.log(createSearchParams(queryObj).toString())
 
-    return (
-        <div>
-          <div>ListComponent</div>
-          <div>
-            <ul>
-              {/* dto를 {bno , title , writer , replyCount} 구조분해 할당해서 사용하면 편하다! */}
-              {listData.dtoList.map(({bno , title , writer , replyCount}) => 
-              <li key={bno}
-              onClick={() => moveRead(bno)}>
-                {bno} - {title} - {replyCount}</li>)}
-            </ul>
-          </div>
 
-          <ListPageComponent movePage={movePage} {...listData}></ListPageComponent>
+  return (
+    <div >
+      <div className="text-2xl font-extrabold">ListComponent</div>
 
-        </div>
-      );
+      <div className="bg-gray-100 p-4">
+        <ul className="divide-y divide-green-500">
+          {listData.dtoList.map(({ bno, title, writer, replyCount }) => (
+            <li
+              key={bno}
+              onClick={() => moveRead(bno)}
+              className="cursor-pointer p-2 hover:bg-gray-200"
+            >
+              <span className="font-bold">{bno}</span> - {title} - {writer} - {replyCount}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+
+      <ListPageComponent movePage={movePage} {...listData}></ListPageComponent>
+
+    </div>
+  );
 }
- 
+
 export default ListComponent;

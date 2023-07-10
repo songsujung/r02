@@ -6,26 +6,39 @@ const ListPageComponent = ({movePage, start, end, prev, pageNums, next, page}) =
     }
 
     return ( 
-        <div className="flex m-4 p-2 justify-center ">
-        <ul className="flex ">
+      <div className="flex items-center justify-center mt-8">
+      <ul className="flex space-x-4">
 
-        {prev ? <li className="m-2 p-2 bg-blue-500 text-white font-extrabold"
-              onClick={()=>handleClickPage(start-1)}
-              >PREV</li>:<></>}
+        {prev && (
+          <li
+            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md cursor-pointer"
+            onClick={() => handleClickPage(start - 1)}
+          >
+            PREV
+          </li>
+        )}
 
-        {pageNums.map(num => <li key={num}
-              className="m-2 p-2 bg-blue-500 text-white font-extrabold"
-              onClick={() => handleClickPage(num)}
-              >
-                {page === num ? <span className="text-red-500 underline">{num}</span> : <span>{num}</span>}
-                </li>)}
+        {pageNums.map(num => (
+          <li
+            key={num}
+            className={`px-4 py-2 border-2 border-green-500 font-semibold rounded-md cursor-pointer ${page === num ? 'text-green-600 underline' : ''}`}
+            onClick={() => handleClickPage(num)}
+          >
+            {num}
+          </li>
+        ))}
 
-              {next ? <li className="m-2 p-2 bg-blue-500 text-white font-extrabold"
-              onClick={()=>handleClickPage(end+1)}
-              >NEXT</li>:<></>}
+        {next && (
+          <li
+            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md cursor-pointer"
+            onClick={() => handleClickPage(end + 1)}
+          >
+            NEXT
+          </li>
+        )}
 
-        </ul>
-      </div>
+      </ul>
+    </div>
 
      );
 }
