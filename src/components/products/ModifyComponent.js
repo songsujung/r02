@@ -130,19 +130,19 @@ const ModifyComponent = ({pno, moveList, moveRead}) => {
               </ul>
         
           <div>
-            <button className="bg-pink-500 m-2 p-2 border-2 text-3xl"
+            <button className="bg-pink-500 m-2 p-2 border-2 text-3xl rounded-md"
               onClick={handleClickModify}
             >Modify
             </button>
 
-            <button className="bg-blue-500 m-2 p-2 border-2 text-3xl"
+            <button className="bg-blue-500 m-2 p-2 border-2 text-3xl rounded-md"
               onClick={moveList}
             >List
             </button>
 
-            <button className="bg-red-500 m-2 p-2 border-2 text-3xl"
+            <button className="bg-red-500 m-2 p-2 border-2 text-3xl rounded-md"
               onClick={handleCilckDelete}
-            >Delete
+            ><img src='./img/delete.png'></img>
             </button>
           </div>
         </div>
