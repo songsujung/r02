@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProduct } from "../../api/productAPI";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartThunk } from "../../reducers/cartSlice";
 
 const initState = {
     pno:0,
@@ -10,6 +12,10 @@ const initState = {
 }
 
 const ReadComponent = ({pno, moveList, moveModify}) => {
+
+    const {email} = useSelector(state => state.login)
+
+    const dispatch = useDispatch()
 
     const [product, setProduct] = useState(initState)
 
@@ -46,6 +52,13 @@ const ReadComponent = ({pno, moveList, moveModify}) => {
             </div>
             <div>
             <button className="bg-green-700 border-2 m-2 p-2 test-while text-3xl"
+                onClick={() => {
+                    dispatch(addCartThunk({email,pno}))
+                }}
+                >
+                    Add Cart
+                </button>
+                <button className="bg-green-700 border-2 m-2 p-2 test-while text-3xl"
                 onClick={() => moveModify(product.pno)}
                 >
                     modify

@@ -10,7 +10,7 @@ const SampleNav = () => {
         <div className="flex m-6 p-4 text-white font-extrabold">
             <div className="m-4 text-3xl underline">
                 <Link to="/">Main</Link>
-                <span className="bg-green-800 font-extrabold">{todoArr.length}</span>
+                <span className="bg-red-800 font-extrabold">{todoArr.length}</span>
             </div>
             <div className="m-4 text-3xl">
                 <Link to="/about">About</Link>
