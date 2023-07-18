@@ -34,13 +34,13 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
 
   return (
     <div >
-      <div className="text-2xl font-extrabold">ListComponent</div>
+      <div className="text-2xl font-extrabold">MENU</div>
 
       <div className="bg-gray-100 p-4">
       <ul className="flex flex-wrap container justify-center">
           {listData.dtoList.map( dto =>
             <li
-            className="w-2/5  h-[300px]  bg-gray-200 m-2 p-2 rounded-md shadow-lg" 
+            className="w-2/5 h-[300px] bg-gray-200 m-2 p-2 rounded-md shadow-lg" 
             key={dto.pno}
             onClick={() => moveRead(dto.pno)}
             >
@@ -51,8 +51,9 @@ const ListComponent = ({ queryObj, movePage, moveRead }) => {
               <img src={`http://localhost:8080/view/s_${dto.fname}`}></img> 
 
             </div>
-            <div className="flex justify-center font-extrabold">
-                {dto.pname} - {dto.price} 리뷰 {dto.reviewCnt} - {dto.reviewAvg}</div>
+
+            <div className="flex justify-center text-2xl">
+                {dto.pname} - {dto.price} review {dto.reviewCnt} - {dto.reviewAvg}</div>
             </div>
             </li>)}
         </ul>

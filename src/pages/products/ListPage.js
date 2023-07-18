@@ -13,7 +13,6 @@ const ListPage = () => {
 
     return ( 
         <div className="text-3xl">
-            Products List Page
             <ListComponent queryObj={queryObj} movePage={movePage} moveRead={moveRead}></ListComponent>
         </div>
      );

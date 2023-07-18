@@ -11,7 +11,7 @@ const ListPageComponent = ({movePage, start, end, prev, pageNums, next, page}) =
 
         {prev && (
           <li
-            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md cursor-pointer"
+            className="px-4 py-2 bg-gray-800 hover:bg-red-800 text-white font-semibold rounded-md cursor-pointer"
             onClick={() => handleClickPage(start - 1)}
           >
             PREV
@@ -21,7 +21,7 @@ const ListPageComponent = ({movePage, start, end, prev, pageNums, next, page}) =
         {pageNums.map(num => (
           <li
             key={num}
-            className={`px-4 py-2 border-2 border-green-500 font-semibold rounded-md cursor-pointer ${page === num ? 'text-green-600 underline' : ''}`}
+            className={`px-4 py-2 font-semibold rounded-md cursor-pointer ${page === num ? 'text-red-800 underline' : ''}`}
             onClick={() => handleClickPage(num)}
           >
             {num}
@@ -30,7 +30,7 @@ const ListPageComponent = ({movePage, start, end, prev, pageNums, next, page}) =
 
         {next && (
           <li
-            className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md cursor-pointer"
+            className="px-4 py-2 bg-gray-800 hover:bg-red-800 text-white font-semibold rounded-md cursor-pointer"
             onClick={() => handleClickPage(end + 1)}
           >
             NEXT

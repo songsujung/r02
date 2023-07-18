@@ -123,26 +123,23 @@ const ModifyComponent = ({pno, moveList, moveRead}) => {
                 key={idx}>
                   <img src={`http://localhost:8080/view/s_${fname}`}></img> 
                   <button 
-                  className=" border-2 border-red-600 bg-red-300 text-red-600 m-2 p-2 rounded-md"
+                  className=" border-2 border-red-600 bg-red-300 text-2xl text-red-600 "
                   onClick={() => handleClickDelImg(fname)}
                   >X</button>
                 </li>)}
               </ul>
         
           <div>
-            <button className="bg-pink-500 m-2 p-2 border-2 text-3xl rounded-md"
-              onClick={handleClickModify}
-            >Modify
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 m-2 rounded-sm">
+              Modify
             </button>
 
-            <button className="bg-blue-500 m-2 p-2 border-2 text-3xl rounded-md"
-              onClick={moveList}
-            >List
+            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 m-2 rounded-sm">
+              List
             </button>
 
-            <button className="bg-red-500 m-2 p-2 border-2 text-3xl rounded-md"
-              onClick={handleCilckDelete}
-            ><img src='./img/delete.png'></img>
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-sm">
+              DELETE
             </button>
           </div>
         </div>

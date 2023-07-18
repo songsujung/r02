@@ -60,19 +60,19 @@ const initState = {
     return ( 
       <div>
           <h1>Product Input</h1>
-          <div>
+          <div className="">
               <input type="text" name="pname" value={product.pname} onChange={handleChange}></input>
           </div>
-          <div>
+          <div className="">
               <input type="text" name="pdesc" value={product.pdesc} onChange={handleChange}></input>
           </div>
-          <div>
+          <div className="">
               <input type="text" name="price" value={product.price} onChange={handleChange}></input>
           </div>
-          <div>
+          <div className="">
               <input type="file" ref={fileRef} multiple name="images" onChange={handleChange}></input>
           </div>
-          <div>
+          <div className="">
               <button onClick={handleClickSave}>Save</button>
               <button onClick={handleClickClear}>CLEARFILES</button>
           </div>

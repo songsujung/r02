@@ -21,7 +21,7 @@ const ListSearchComponent = ({ moveSearch, queryObj }) => {
     }, [queryObj])
 
     return (
-        <div className="m-4 p-4 bg-white border-2 border-green-500 rounded-full">
+        <div className="m-4 p-4 bg-white border-2 border-red-800 rounded-full">
             <select
                 className="border-2 border-gray-500  m-2 p-2"
                 value={searchObj.type}
@@ -63,7 +63,7 @@ const ListSearchComponent = ({ moveSearch, queryObj }) => {
             </select>
 
             <button
-                className="p-2 m-2  bg-green-500 text-white rounded-md"
+                className="p-2 m-2  bg-gray-800 text-white rounded-md"
                 onClick={e => moveSearch(searchObj.type, searchObj.keyword, searchObj.size)}
             >
                 SEARCH
