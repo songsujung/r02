@@ -24,10 +24,10 @@ const loadCookies = () => {
 
 const initState = {
   email: '',
-  nickname: '',
-  admin: false,
-  loading: false,
-  errorMsg: null
+  nickname : '',
+  admin : false,
+  loading : false,
+  errorMsg : null
 }
 
 
@@ -35,8 +35,8 @@ const loginSlice = createSlice({
   name: 'loginSlice',
   initialState: loadCookies(), // 이 함수 결과를 초기화 값으로 잡아라
   reducers: {
-    requestLogin: (state, param) => {
-      const payload = param.payload
+    requestLogin: (state, action) => {
+      const payload = action.payload
       console.log("requestLogin", payload)
 
       const loginObj = {
@@ -45,28 +45,28 @@ const loginSlice = createSlice({
       }
 
       // 객체를 문자열로 변환 - JSON.stringify
-      setCookie("login", JSON.stringify(loginObj), 1)
+      setCookie("login", JSON.stringify(payload), 1)
 
 
-      return loginObj
+      return payload
     }
   },
   extraReducers: (builder) => {
     builder.addCase(postLoginThunk.fulfilled , (state , action) => {
-      console.log("fulfilled", action.payload)
-      const {email, nickname, admin, errorMsg} = action.payload
+      // 현재 로그인한 사용자의 정보 - action.payload
+      console.log("fulfilled" , action.payload)
+      const {email , nickname , admin , errorMsg} = action.payload
 
-      if(errorMsg) {
+      if(errorMsg){
         state.errorMsg = errorMsg
-        return
       }
 
       state.loading = false
       state.email = email
-      state.nickname = nickname
+      state.nickname=nickname
       state.admin = admin
 
-      setCookie("login", JSON.stringify(action.payload), 1) // 쿠키값이 보관이 됨
+      setCookie("login", JSON.stringify(action.payload), 1)
     })
     .addCase(postLoginThunk.pending, (state , action) => {
       console.log("pending")
@@ -77,5 +77,7 @@ const loginSlice = createSlice({
     })
   }
 })
+
+export const {requestLogin} = loginSlice.actions
 
 export default loginSlice.reducer
