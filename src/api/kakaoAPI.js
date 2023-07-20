@@ -10,7 +10,7 @@ export const getAccessToken = async (authCode) => {
 
     const header = {
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
         }
     }
 
@@ -36,7 +36,7 @@ export const getUserEmail = async (accessToken) => {
     const header = {
         headers: {
             "Authorization": `Bearer ${accessToken}`,
-            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+            "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
         }
     }
 
